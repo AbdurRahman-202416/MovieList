@@ -85,7 +85,7 @@
                 .catch((error) => console.error(error));
             }
 
-            GetData();
+         
             function displayMovies(movies) {
               console.log(movies);
               const movieGallery = document.getElementById("movie-gallery");
@@ -166,24 +166,10 @@
               }
             });
 
-            // //  fetchMovies()
-
-            // window.onload = fetchMovies();
-            // window.onload = function () {
-            //   console.log("load");
-            // };
+        
+window.addEventListener('load', Getdata);
+window.addEventListener('load', displayMovies);
+            
     </script>
   </body>
 </html>
-
-
-<!-- <img id="randomImage" src="https://loremflickr.com/800/600/cat" alt="Random Cat Image">
-<button onclick="loadNewImage()">Load New Image</button>
-
-<script>
-  function loadNewImage() {
-    const keyword = prompt("Enter a keyword, like 'cat':");
-    document.getElementById("randomImage").src = `https://loremflickr.com/800/600/${keyword}?random=${Math.random()}`;
-  }
-</script> -->
-
