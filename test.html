@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Build a Successful Blog</title>
+    <!-- Bootstrap CSS -->
+    <style>
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .Blog-text {
+        text-align: justify;
+      }
+    </style>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="parant" class="container">
+      <div class="container mt-5">
+        <h1 class="mb-3">How to Build a Successful Blog</h1>
+        <p class="text-muted">
+          By <strong>Tim Burton</strong> | Published on
+          <strong>January 19, 2022</strong>
+        </p>
+
+        <div class="content mt-4">
+          <p class="Blog-text">
+            Building a successful blog takes time, effort, and dedication. It's
+            not just about writing; it's about creating valuable content that
+            resonates with your readers. Start by identifying your niche and
+            understanding your audience's needs. Consistency is key – keep a
+            regular posting schedule and always engage with your audience
+            through comments and social media. Remember to promote your blog on
+            various platforms and consider collaborations with other bloggers to
+            expand your reach. Over time, with perseverance and the right
+            strategy, you'll see growth and success in your blogging journey.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    
+
+    <script>
+      function getdata() {
+        fetch("https://dummyapi.online/api/blogposts")
+          .then((res) => res.json())
+          .then((data) => displayData(data))
+          .catch((error) => console.log(error));
+      }
+
+      function displayData(data) {
+        let parrant = document.getElementById("parant");
+        parrant.innerHTML = ""; // Clear existing content
+
+        data.forEach((item) => {
+          parrant.innerHTML += `
+            <div class="container mt-5">
+                <h1 class="mb-3">${item.id}) ${item.title}</h1>
+                <p class="text-muted">
+                    By <strong>${item.author}</strong> | Published on
+                    <strong>${item.date_published}</strong>
+                </p>
+                <div class="content mt-4">
+                    <p class="Blog-text">
+                        ${item.content}
+                    </p>
+                </div>
+            </div>
+        `;
+        });
+      }
+    
+
+      window.onload = getdata;
+    </script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
