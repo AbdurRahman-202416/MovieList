@@ -29,23 +29,15 @@
       .card-img-top {
         height: 250px;
         object-fit: container;
-
       }
       .card:hover {
         transform: scale(1.1);
         transition-duration: 0.9s;
         margin-bottom: 5px;
-      
       }
-<<<<<<< HEAD
-      
-=======
->>>>>>> 3215273d4210ac16648eabec0c442258e5d4a92f
-    
     </style>
   </head>
   <body style="background-color: rgb(204, 204, 204)">
-    
     <div class="container">
       <h1
         style="
@@ -71,45 +63,35 @@
         <hr />
       </div>
 
-<<<<<<< HEAD
-      <h1 id="msg">         </h1>
-
-
-=======
       <h1 id="msg"></h1>
->>>>>>> 3215273d4210ac16648eabec0c442258e5d4a92f
+
       <div class="row" id="movie-gallery">
         <!-- movie  gallery will be displayed here -->
       </div>
     </div>
-    
 
     <script>
-            function GetData() {
-              fetch("https://dummyapi.online/api/movies")
-                .then((response) => response.json())
-                .then((data) => {
-                  console.log(data);
-                  displayMovies(data);
-                })
-                .catch((error) => console.error(error));
-            }
+      function GetData() {
+        fetch("https://dummyapi.online/api/movies")
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            displayMovies(data);
+          })
+          .catch((error) => console.error(error));
+      }
 
-<<<<<<< HEAD
-            GetData();
-=======
-         
->>>>>>> 3215273d4210ac16648eabec0c442258e5d4a92f
-            function displayMovies(movies) {
-              console.log(movies);
-              const movieGallery = document.getElementById("movie-gallery");
-              movies.forEach((movie) => {
-                const card = document.createElement("div");
-               let keyword= movie.movie;
-               let key= keyword.substring(keyword.lastIndexOf(" ") + 1).trim();
-               console.log(key)
-                card.className = "col-md-3";
-                card.innerHTML += `
+      GetData();
+      function displayMovies(movies) {
+        console.log(movies);
+        const movieGallery = document.getElementById("movie-gallery");
+        movies.forEach((movie) => {
+          const card = document.createElement("div");
+          let keyword = movie.movie;
+          let key = keyword.substring(keyword.lastIndexOf(" ") + 1).trim();
+          console.log(key);
+          card.className = "col-md-3";
+          card.innerHTML += `
                
                                <div class="card">
 
@@ -121,81 +103,72 @@
                                    </div>
                                </div>
                            `;
-                movieGallery.appendChild(card);
-              });
-            }
+          movieGallery.appendChild(card);
+        });
+      }
 
-            let searchInput = document.getElementById("search");
-            searchInput.addEventListener("input", function () {
-              const searchValue = searchInput.value.toLowerCase();
-              const movieGallery = document.getElementById("movie-gallery");
-              const cards = movieGallery.children;
+      let searchInput = document.getElementById("search");
+      searchInput.addEventListener("input", function () {
+        const searchValue = searchInput.value.toLowerCase();
+        const movieGallery = document.getElementById("movie-gallery");
+        const cards = movieGallery.children;
 
-              let foundAny = false;
+        let foundAny = false;
 
-              Array.from(cards).forEach((card) => {
-                const movieTitle = card
-                  .querySelector(".card-title")
-                  .textContent.toLowerCase();
-                if (movieTitle.includes(searchValue)) {
-                  card.style.display = "block";
-                  foundAny = true; // Set flag to true if a movie is found
-                } else {
-                  card.style.display = "none";
-                }
-              });
+        Array.from(cards).forEach((card) => {
+          const movieTitle = card
+            .querySelector(".card-title")
+            .textContent.toLowerCase();
+          if (movieTitle.includes(searchValue)) {
+            card.style.display = "block";
+            foundAny = true; // Set flag to true if a movie is found
+          } else {
+            card.style.display = "none";
+          }
+        });
 
-              // Remove any existing "No movies found" message
-              const existingMessage = document.getElementById("no-movies-message");
-              if (existingMessage) {
-                existingMessage.remove();
-              }
+        // Remove any existing "No movies found" message
+        const existingMessage = document.getElementById("no-movies-message");
+        if (existingMessage) {
+          existingMessage.remove();
+        }
 
-              // If no movies were found, create and display the message
-              if (!foundAny) {
-          let msg = document.getElementById('msg');
+        // If no movies were found, create and display the message
+        if (!foundAny) {
+          let msg = document.getElementById("msg");
           let h1 = document.createElement("h1");
 
           let img = document.createElement("img");
-          img.src = "https://cdn1.iconfinder.com/data/icons/actions-3/32/Actions_Search_Again-512.png";
+          img.src =
+            "https://cdn1.iconfinder.com/data/icons/actions-3/32/Actions_Search_Again-512.png";
           img.alt = "";
-          img.height="100";
-          img.width='100';
+          img.height = "100";
+          img.width = "100";
 
           h1.appendChild(img);
-          h1.appendChild(document.createTextNode(" No movies found, Search Again."));
+          h1.appendChild(
+            document.createTextNode(" No movies found, Search Again.")
+          );
 
           msg.appendChild(h1);
-      
 
-                h1.classList.add("noFound");
-                h1.id = "no-movies-message";
-                 let b= document.querySelector('body');
-                b.style.background='#43859F';
-               setTimeout(() => {
-                let b= document.querySelector('body');
-                b.style.background=' rgb(204, 204, 204)';
-               }, 5000);
-               
-              }
-            });
+          h1.classList.add("noFound");
+          h1.id = "no-movies-message";
+          let b = document.querySelector("body");
+          b.style.background = "#43859F";
+          setTimeout(() => {
+            let b = document.querySelector("body");
+            b.style.background = " rgb(204, 204, 204)";
+          }, 5000);
+        }
+      });
 
-<<<<<<< HEAD
-            // //  fetchMovies()
+      // //  fetchMovies()
 
-            // window.onload = fetchMovies();
-            // window.onload = function () {
-            //   console.log("load");
-            // };
-=======
-        
-window.addEventListener('load', GetData);
-window.addEventListener('load', displayMovies);
-            
->>>>>>> 3215273d4210ac16648eabec0c442258e5d4a92f
+      // window.onload = fetchMovies();
+      // window.onload = function () {
+      //   console.log("load");
+      // };
     </script>
   </body>
 </html>
-
-
-
