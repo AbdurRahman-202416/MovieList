@@ -42,8 +42,6 @@
         </div>
       </div>
     </div>
-    
-    
 
     <script>
       function getdata() {
@@ -52,6 +50,9 @@
           .then((data) => displayData(data))
           .catch((error) => console.log(error));
       }
+      getdata().then((n) => {
+        console.log(n);
+      });
 
       function displayData(data) {
         let parrant = document.getElementById("parant");
@@ -74,10 +75,8 @@
         `;
         });
       }
-    
 
-
-      window.onload = displayData()
+      window.onload = displayData();
       window.onload = getdata();
     </script>
     <!-- Bootstrap JS and dependencies -->
